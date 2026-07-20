@@ -32,7 +32,7 @@
       --jaune: #FFD9A1;
       --rose: #FFABFD;
       --beige: #F2F2F2;
-      --viz-h: 42vh;
+      --viz-h: 24vh;
     }
 
     html,
@@ -153,11 +153,19 @@
     }
 
     /* Abstract SVG shapes */
-    #vshape {
+    .vshape-wrap {
       position: absolute;
       inset: 0;
-      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none
+    }
+
+    #vshape {
       height: 100%;
+      width: auto;
+      max-width: 100%;
       pointer-events: none
     }
 
@@ -247,7 +255,7 @@
       letter-spacing: .2em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 32px;
+      margin-bottom: 16px;
       opacity: 0;
       animation: up .6s ease .15s forwards
     }
@@ -257,7 +265,7 @@
       font-weight: 300;
       line-height: 1.13;
       letter-spacing: -.025em;
-      margin-bottom: 28px;
+      margin-bottom: 16px;
       opacity: 0;
       animation: up .7s ease .3s forwards
     }
@@ -274,7 +282,7 @@
       font-size: 15px;
       line-height: 1.85;
       color: var(--mid);
-      margin-bottom: 44px;
+      margin-bottom: 24px;
       opacity: 0;
       animation: up .7s ease .45s forwards
     }
@@ -287,6 +295,34 @@
     .i-cta {
       opacity: 0;
       animation: up .6s ease .6s forwards
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: none;
+      border: none;
+      color: var(--mid);
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      cursor: pointer;
+      padding: 0;
+      margin-bottom: 24px;
+      transition: color .2s, transform .2s;
+    }
+
+    .btn-back:hover {
+      color: var(--text);
+      transform: translateX(-3px);
+    }
+
+    .btn-back svg {
+      width: 14px;
+      height: 14px;
+      transition: transform .2s;
     }
 
     /* ═══════════════════════════════════
@@ -363,7 +399,7 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 32px
+      margin-bottom: 16px
     }
 
     .q-num {
@@ -394,7 +430,7 @@
       font-weight: 400;
       line-height: 1.42;
       letter-spacing: -.01em;
-      margin-bottom: 28px;
+      margin-bottom: 16px;
       min-height: 50px
     }
 
@@ -524,7 +560,7 @@
       text-transform: uppercase;
       color: var(--A);
       opacity: .75;
-      margin-bottom: 22px
+      margin-bottom: 12px
     }
 
     .cap-h {
@@ -532,14 +568,14 @@
       font-weight: 300;
       letter-spacing: -.02em;
       line-height: 1.2;
-      margin-bottom: 12px
+      margin-bottom: 8px
     }
 
     .cap-sub {
       font-size: 14px;
       color: var(--mid);
       line-height: 1.7;
-      margin-bottom: 32px
+      margin-bottom: 16px
     }
 
     .field {
@@ -1102,7 +1138,7 @@
    ═══════════════════════════════════ */
     @media(max-height:700px) {
       :root {
-        --viz-h: 32vh
+        --viz-h: 20vh
       }
 
       .panel {
@@ -1112,7 +1148,7 @@
 
     @media(max-height:560px) {
       :root {
-        --viz-h: 25vh
+        --viz-h: 16vh
       }
     }
 
@@ -1180,6 +1216,11 @@
     }
 
     @media(max-width:640px) {
+      #itic-logo {
+        top: 12px;
+        left: 16px;
+        height: 34px
+      }
       #itic-logo svg {
         height: 34px
       }
@@ -1246,7 +1287,8 @@
     <div class="vorb" id="vo2"></div>
     <div class="vorb" id="vo3"></div>
     <div class="vgrid"></div>
-    <svg id="vshape" viewBox="0 0 800 340" preserveAspectRatio="xMidYMid slice">
+    <div class="vshape-wrap">
+      <svg id="vshape" viewBox="0 0 800 340" preserveAspectRatio="xMidYMid meet">
       <defs>
         <filter id="glow2">
           <feGaussianBlur stdDeviation="2.5" result="b" />
@@ -1279,7 +1321,8 @@
         <circle cx="120" cy="290" r="2" fill="rgba(59,130,246,.7)" />
         <circle cx="400" cy="170" r="1.5" fill="rgba(6,182,212,.6)" />
       </g>
-    </svg>
+      </svg>
+    </div>
     <div class="vfade"></div>
     <div class="vline" id="vline"></div>
   </div>
@@ -1311,6 +1354,10 @@
     <!-- NIVEAU VISÉ -->
     <div class="panel" id="pN">
       <div class="pi">
+        <button class="btn-back" onclick="prevLevel()">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>Retour</span>
+        </button>
         <p class="cap-eye">Avant de commencer</p>
         <h2 class="cap-h">Tu veux faire…</h2>
         <p class="cap-sub">Ton choix déterminera la formation ITIC Paris<br>recommandée à la fin du test.</p>
@@ -1334,6 +1381,10 @@
     <!-- QUIZ -->
     <div class="panel" id="pQ">
       <div class="pi">
+        <button class="btn-back" onclick="prevQ()">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>Retour</span>
+        </button>
         <div class="q-hd">
           <span class="q-num" id="qNum">01 — 10</span>
           <div class="q-sep"></div>
@@ -1352,6 +1403,10 @@
     <!-- CAPTURE -->
     <div class="panel" id="pC">
       <div class="pi">
+        <button class="btn-back" onclick="backToQuiz()">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>Retour</span>
+        </button>
         <p class="cap-eye">Analyse complétée</p>
         <h2 class="cap-h">Où envoyer<br>votre profil ?</h2>
         <p class="cap-sub">Votre analyse et la formation compatible<br>avec votre profil vous seront transmises ici.</p>
@@ -1989,27 +2044,88 @@
       setViz('quiz'); updateVizShape(0); showPanel('pQ'); setTimeout(renderQ, 120);
     }
 
+    function recalculateScores() {
+      scores = Object.fromEntries(PKEYS.map(k => [k, 0]));
+      answers.forEach((ans, idx) => {
+        if (ans && QS[idx]) {
+          ans.forEach(i => {
+            const sObj = QS[idx].opts[i]?.s;
+            if (sObj) {
+              Object.entries(sObj).forEach(([k, v]) => {
+                scores[k] = (scores[k] || 0) + v;
+              });
+            }
+          });
+        }
+      });
+    }
+
+    function prevLevel() {
+      setViz('intro');
+      showPanel('pI');
+    }
+
+    function prevQ() {
+      if (qIdx > 0) {
+        qIdx--;
+        // Cut answers array so we don't hold future questions if they change path
+        answers = answers.slice(0, qIdx + 1);
+        const pq = document.getElementById('pQ');
+        pq.style.transition = 'opacity .22s ease,transform .22s ease';
+        pq.style.opacity = '0'; pq.style.transform = 'translateX(12px)';
+        setTimeout(() => {
+          renderQ(); pq.style.transform = 'translateX(-12px)';
+          requestAnimationFrame(() => requestAnimationFrame(() => { pq.style.opacity = '1'; pq.style.transform = 'translateX(0)'; }));
+        }, 230);
+      } else {
+        setViz('intro');
+        showPanel('pN');
+      }
+    }
+
+    function backToQuiz() {
+      qIdx = QS.length - 1;
+      setViz('quiz');
+      showPanel('pQ');
+      renderQ();
+    }
+
     function renderQ() {
       const q = QS[qIdx]; multiSel = new Set();
       document.getElementById('qNum').textContent = String(qIdx + 1).padStart(2, '0') + ' — ' + QS.length;
       document.getElementById('qTxt').textContent = q.text;
       document.getElementById('qBadge').style.display = q.isMulti ? '' : 'none';
       const wrap = document.getElementById('qOpts'); wrap.innerHTML = '';
+      const prevAns = answers[qIdx];
       q.opts.forEach((opt, i) => {
         const d = document.createElement('div');
-        d.className = 'opt' + (q.isMulti ? ' multi' : '');
+        const isSel = prevAns && prevAns.has(i);
+        d.className = 'opt' + (q.isMulti ? ' multi' : '') + (isSel ? ' sel' : '');
         d.innerHTML = `<span class="opt-m"><span class="opt-ck"></span></span><span class="opt-lb">${opt.t}</span>`;
         d.addEventListener('click', () => q.isMulti ? toggleMulti(i, d) : pickSingle(i, d));
         wrap.appendChild(d);
+        if (isSel && q.isMulti) {
+          multiSel.add(i);
+        }
         setTimeout(() => d.classList.add('shown'), i * 55 + 60);
       });
-      document.getElementById('cwrap').classList.remove('show');
+      const cwrap = document.getElementById('cwrap');
+      if (q.isMulti && multiSel.size > 0) {
+        cwrap.classList.add('show');
+        if (multiSel.size >= 2) {
+          const opts = wrap.querySelectorAll('.opt');
+          opts.forEach((o, idx) => {
+            if (!multiSel.has(idx)) o.classList.add('dim');
+          });
+        }
+      } else {
+        cwrap.classList.remove('show');
+      }
       setProg(qIdx, QS.length);
       updateVizShape(qIdx);
     }
 
     function pickSingle(i, el) {
-      Object.entries(QS[qIdx].opts[i].s).forEach(([k, v]) => scores[k] += v);
       answers[qIdx] = new Set([i]);
       document.querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
       el.classList.add('sel');
@@ -2031,7 +2147,6 @@
 
     function advanceMulti() {
       if (!multiSel.size) return;
-      multiSel.forEach(i => Object.entries(QS[qIdx].opts[i].s).forEach(([k, v]) => scores[k] += v));
       answers[qIdx] = new Set([...multiSel]); nextQ();
     }
 
@@ -2103,9 +2218,8 @@
     function getSorted() { return Object.entries(scores).sort((a, b) => b[1] - a[1]); }
     function getComboKey(a, b) { return [a, b].sort().join('+'); }
 
-    // Profil (combiné si secondaire ≥ 60 % de la dominante, sinon individuel)
-    // croisé avec le niveau choisi → formation du tableau de correspondances.
     function computeResult() {
+      recalculateScores();
       const s = getSorted();
       const pk = s[0][0], pv = s[0][1], sk = s[1][0], sv = s[1][1];
       const hasS = pv > 0 && sv >= pv * .6;
