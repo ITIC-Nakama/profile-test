@@ -1492,8 +1492,7 @@
               <a id="fcLink" href="#" target="_blank" class="btn btn-solid">
                 Voir la formation <span class="arr">→</span>
               </a>
-              <a href="https://www.iticparis.com/index.php?destination=inscription-en-ligne-formation&q=inscription-en-ligne-origine-de-la-candidature"
-                target="_blank" class="btn btn-ghost">Candidater</a>
+              <a id="fcApply" href="#" target="_blank" class="btn btn-ghost">Candidater</a>
             </div>
           </div>
         </div>
@@ -2289,6 +2288,10 @@
         `<span class="fc-badge hl">${f.niveau}</span>` +
         f.badges.map(b => `<span class="fc-badge">${b}</span>`).join('');
       document.getElementById('fcLink').href = f.url;
+      const isTech = f.badges.includes("Tech School");
+      document.getElementById('fcApply').href = isTech
+        ? "https://www.iticparis.com/tech-school/formulaire/candidature-etape-1"
+        : "https://www.iticparis.com/business-school/formulaire/candidature-etape-1";
 
       showPanel('pR');
 
