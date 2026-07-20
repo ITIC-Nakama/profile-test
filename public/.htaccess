@@ -1,0 +1,9 @@
+# Future Profile — front controller Slim
+DirectoryIndex index.html index.php
+
+RewriteEngine On
+# Les fichiers existants (index.html, assets…) sont servis directement ;
+# tout le reste (API) passe par le front controller.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]

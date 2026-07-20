@@ -1,0 +1,18 @@
+# Future Profile — Apache, cas où le DocumentRoot pointe sur la racine du projet.
+# (Si l'hébergement permet de pointer le DocumentRoot sur public/, ce fichier
+# est inutile : seul public/.htaccess sert.)
+
+# Jamais servis : secrets, code, données, documents projet
+RedirectMatch 404 ^/(data|src|vendor)(/|$)
+RedirectMatch 404 ^/\.env
+RedirectMatch 404 ^/(composer\.(json|lock)|README\.md)$
+RedirectMatch 404 \.(docx|xlsx|pdf|log)$
+
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# Tout le reste transite par public/
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ public/$1 [L]
