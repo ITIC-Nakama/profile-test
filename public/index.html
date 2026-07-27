@@ -2017,7 +2017,9 @@
       document.querySelectorAll('.panel').forEach(p => {
         p.classList.remove('on'); p.style.opacity = p.style.transform = p.style.transition = '';
       });
-      requestAnimationFrame(() => requestAnimationFrame(() => document.getElementById(id).classList.add('on')));
+      const el = document.getElementById(id);
+      if (el) el.scrollTop = 0;
+      requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('on')));
     }
     function setProg(s, t) { document.getElementById('prog').style.width = ((s / t) * 100) + '%'; }
 
