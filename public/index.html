@@ -403,26 +403,42 @@
     }
 
     .q-num {
-      font-size: 10px;
+      font-size: 12px;
+      font-weight: 500;
       letter-spacing: .18em;
       text-transform: uppercase;
-      color: var(--muted)
+      color: var(--mid)
     }
 
     .q-sep {
       flex: 1;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.08)
+      height: 3px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.12);
+      position: relative;
+      overflow: hidden
+    }
+
+    .q-sep::after {
+      content: '';
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: var(--p, 0%);
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--A), var(--B));
+      transition: width .4s ease
     }
 
     .q-mbadge {
-      font-size: 9px;
+      font-size: 10.5px;
       letter-spacing: .12em;
       text-transform: uppercase;
-      color: rgba(90, 114, 244, .65);
-      border: 1px solid rgba(90, 114, 244, .18);
+      font-weight: 500;
+      color: #9AAAFF;
+      background: rgba(90, 114, 244, .12);
+      border: 1px solid rgba(90, 114, 244, .55);
       border-radius: 100px;
-      padding: 3px 10px
+      padding: 4px 12px
     }
 
     .q-txt {
@@ -1410,9 +1426,9 @@
         <p class="cap-eye">Analyse complétée</p>
         <h2 class="cap-h">Où envoyer<br>votre profil ?</h2>
         <p class="cap-sub">Votre analyse et la formation compatible<br>avec votre profil vous seront transmises ici.</p>
-        <input type="text" class="field" id="fName" placeholder="Votre prénom (facultatif)" autocomplete="given-name">
+        <input type="text" class="field" id="fName" placeholder="Votre prénom " autocomplete="given-name">
         <input type="email" class="field" id="fEmail" placeholder="Votre adresse email" autocomplete="email" required>
-        <input type="tel" class="field" id="fPhone" placeholder="Votre téléphone (facultatif)" autocomplete="tel">
+        <input type="tel" class="field" id="fPhone" placeholder="Votre téléphone " autocomplete="tel">
         <input type="text" class="field hp" id="fWebsite" name="website" tabindex="-1" autocomplete="off"
           aria-hidden="true">
         <label class="consent">
@@ -2094,6 +2110,7 @@
     function renderQ() {
       const q = QS[qIdx]; multiSel = new Set();
       document.getElementById('qNum').textContent = String(qIdx + 1).padStart(2, '0') + ' — ' + QS.length;
+      document.querySelector('.q-sep').style.setProperty('--p', ((qIdx + 1) / QS.length * 100) + '%');
       document.getElementById('qTxt').textContent = q.text;
       document.getElementById('qBadge').style.display = q.isMulti ? '' : 'none';
       const wrap = document.getElementById('qOpts'); wrap.innerHTML = '';
@@ -2128,13 +2145,13 @@
 
     function pickSingle(i, el) {
       answers[qIdx] = new Set([i]);
-      document.querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
+      document.querySelectorAll('#qOpts .opt').forEach(o => o.classList.remove('sel'));
       el.classList.add('sel');
       setTimeout(nextQ, 380);
     }
 
     function toggleMulti(i, el) {
-      const opts = document.querySelectorAll('.opt');
+      const opts = document.querySelectorAll('#qOpts .opt');
       if (multiSel.has(i)) { multiSel.delete(i); el.classList.remove('sel'); }
       else {
         if (multiSel.size >= 2) { const f = [...multiSel][0]; multiSel.delete(f); opts[f].classList.remove('sel', 'dim'); }
