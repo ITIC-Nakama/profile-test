@@ -1242,6 +1242,37 @@
       }
     }
 
+    #site-link {
+      position: fixed;
+      top: 26px;
+      right: 22px;
+      z-index: 50;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      border: 1px solid var(--border-h);
+      border-radius: 100px;
+      padding: 7px 14px;
+      transition: color .18s, border-color .18s
+    }
+
+    #site-link:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, .45)
+    }
+
+    @media(max-width:640px) {
+      #site-link {
+        top: 15px;
+        right: 16px;
+        font-size: 10px;
+        padding: 6px 11px
+      }
+    }
+
     #itic-tri {
       position: fixed;
       bottom: -18vw;
@@ -1279,7 +1310,7 @@
 </head>
 
 <body>
-  <div id="itic-logo"><svg viewBox="0 0 239 62" xmlns="http://www.w3.org/2000/svg" role="img"
+  <a id="itic-logo" href="https://www.iticparis.com" aria-label="Retour au site ITIC Paris"><svg viewBox="0 0 239 62" xmlns="http://www.w3.org/2000/svg" role="img"
       aria-label="ITIC Paris — Enseignement supérieur privé">
       <g fill="none" fill-rule="evenodd">
         <path
@@ -1291,7 +1322,8 @@
           d="M43.697 6.29L5.635 44.189c6.377 10.636 16.426 17.286 16.426 17.286h.077s21.56-14.256 21.56-34.42h-.007l.006-20.763zm90.665 55.307h.834V.75h-.834zm6.301-1.655h-1.687v1.295h2.006v.697h-2.919v-4.532h2.913v.7h-2v1.14h1.687zm4.639 1.992h-.913l-1.835-3.056-.018.002v3.054h-.913v-4.532h.913l1.834 3.054.02-.004v-3.05h.912zm3.21-1.183a.528.528 0 00-.183-.42c-.122-.105-.335-.205-.642-.299-.526-.157-.923-.342-1.196-.556-.272-.215-.407-.506-.407-.876s.153-.674.459-.91c.307-.235.697-.353 1.172-.353.504 0 .91.126 1.217.38.307.253.457.585.446.996l-.006.018h-.885c0-.226-.068-.4-.207-.52-.137-.122-.33-.183-.578-.183-.224 0-.399.054-.522.162a.526.526 0 00-.184.414c0 .153.066.28.2.378.134.099.364.203.691.313.5.141.882.326 1.143.553.263.227.395.525.395.898 0 .387-.152.693-.457.918-.304.223-.706.335-1.206.335-.49 0-.91-.121-1.261-.364-.351-.243-.522-.604-.511-1.086l.006-.019h.885c0 .268.078.465.237.591.158.128.373.19.644.19.244 0 .43-.05.558-.152a.496.496 0 00.192-.408m4.185-.809h-1.687v1.295h2.006v.697h-2.919v-4.532h2.913v.7h-2v1.14h1.687zm1.023 1.992h.912v-4.532h-.912zm5.304-.619c-.142.184-.353.345-.634.48-.282.137-.644.205-1.088.205-.55 0-1.001-.173-1.351-.518-.35-.343-.524-.79-.524-1.34v-.946c0-.548.17-.994.509-1.34.34-.347.776-.519 1.31-.519.556 0 .981.132 1.278.394.296.262.44.612.428 1.05l-.006.019h-.86c0-.24-.07-.428-.21-.562-.138-.134-.341-.2-.609-.2a.818.818 0 00-.675.322c-.17.215-.256.49-.256.829v.952c0 .343.088.622.262.837.176.217.41.324.704.324a1.6 1.6 0 00.513-.066.763.763 0 00.293-.164v-.877h-.875v-.63h1.791v1.75zm4.454.619h-.912l-1.836-3.056-.018.002v3.054h-.913v-4.532h.913l1.835 3.054.019-.004v-3.05h.912zm3.439-1.992h-1.688v1.295h2.007v.697h-2.92v-4.532h2.914v.7h-2v1.14h1.687zm3.313.8h.02l1.168-3.34h1.191v4.532h-.912V58.84l-.02-.004-1.125 3.097h-.62l-1.124-3.103-.02.004v3.099h-.912v-4.531h1.198zm5.817-.8h-1.687v1.295h2.006v.697h-2.92v-4.532h2.914v.7h-2v1.14h1.687zm4.639 1.992h-.913l-1.835-3.056-.018.002v3.054h-.913v-4.532h.913l1.834 3.054.02-.004v-3.05h.912zm3.92-3.831h-1.301v3.831h-.913v-3.831h-1.281v-.7h3.495zm3.654 2.648a.528.528 0 00-.183-.42c-.122-.105-.336-.205-.643-.299-.525-.157-.923-.342-1.195-.556-.272-.215-.407-.506-.407-.876s.152-.674.458-.91c.307-.235.698-.353 1.173-.353.504 0 .91.126 1.217.38.307.253.456.585.446.996l-.006.018h-.885c0-.226-.069-.4-.207-.52-.137-.122-.33-.183-.578-.183-.225 0-.399.054-.522.162a.526.526 0 00-.184.414c0 .153.066.28.2.378.133.099.364.203.691.313.5.141.881.326 1.143.553.263.227.394.525.394.898 0 .387-.152.693-.456.918-.305.223-.706.335-1.206.335-.49 0-.91-.121-1.262-.364-.35-.243-.522-.604-.51-1.086l.005-.019h.885c0 .268.079.465.238.591.157.128.372.19.644.19.243 0 .43-.05.557-.152a.496.496 0 00.193-.408m5.192-3.348v2.965c0 .51-.17.91-.51 1.2-.34.287-.78.432-1.322.432-.54 0-.977-.145-1.314-.433-.337-.289-.505-.688-.505-1.199v-2.965h.916v2.965c0 .304.08.534.243.695.163.16.382.239.66.239.281 0 .505-.08.668-.24.165-.16.248-.39.248-.694v-2.965h.916zm1.703 2.187h.829c.254 0 .447-.068.578-.206a.735.735 0 00.197-.528.77.77 0 00-.196-.54c-.13-.142-.323-.213-.579-.213h-.829v1.488zm0 .701v1.643h-.912v-4.531h1.741c.523 0 .934.133 1.234.398.3.265.45.615.45 1.049 0 .434-.15.782-.45 1.045-.3.264-.71.396-1.234.396h-.829zm4.808-4.164h1.016l.006.019-.866.808h-.779l.623-.827zm.959 3.816h-1.688v1.294h2.007v.698h-2.92v-4.532h2.914v.7h-2v1.14h1.687v.7zm1.873-.521h.647c.257 0 .447-.053.572-.161.124-.108.188-.268.188-.48a.655.655 0 00-.19-.494c-.126-.123-.31-.184-.555-.184h-.662v1.32zm0 .7v1.812h-.913v-4.532h1.575c.519 0 .925.118 1.218.353.292.237.439.565.439.986a.988.988 0 01-.186.602 1.294 1.294 0 01-.543.409c.27.08.463.212.58.396.118.184.178.413.178.685v.333c0 .126.016.258.051.396.035.138.093.24.177.307v.065h-.941c-.084-.067-.138-.176-.162-.33a2.898 2.898 0 01-.035-.445v-.32c0-.226-.062-.402-.187-.528-.124-.125-.3-.188-.526-.188h-.725zm3.229 1.812h.913v-4.532h-.913zm4.416-1.992h-1.687v1.295h2.006v.697h-2.919v-4.532h2.913v.7h-2v1.14h1.687zm4.567-2.539v2.965c0 .51-.17.91-.509 1.2-.34.287-.78.432-1.323.432-.54 0-.977-.145-1.314-.433-.337-.289-.505-.688-.505-1.199v-2.965h.916v2.965c0 .304.081.534.244.695.162.16.382.239.659.239.282 0 .505-.08.669-.24.165-.16.247-.39.247-.694v-2.965h.916zm1.703 2.019h.648c.256 0 .447-.053.572-.161.124-.108.188-.268.188-.48a.655.655 0 00-.19-.494c-.126-.123-.31-.184-.555-.184h-.662v1.32zm0 .7v1.812h-.912v-4.532h1.575c.519 0 .925.118 1.217.353.293.237.44.565.44.986a.988.988 0 01-.186.602 1.287 1.287 0 01-.543.409c.27.08.463.212.58.396.118.184.178.413.178.685v.333c0 .126.016.258.051.396.035.138.093.24.177.307v.065h-.941c-.084-.067-.138-.176-.162-.33a2.898 2.898 0 01-.035-.445v-.32c0-.226-.063-.402-.187-.528-.123-.125-.3-.188-.526-.188h-.725zm5.674-.532h.828c.255 0 .448-.068.579-.206a.735.735 0 00.197-.528.77.77 0 00-.196-.54c-.13-.142-.323-.213-.58-.213h-.828v1.488zm0 .701v1.643h-.912v-4.531h1.74c.523 0 .935.133 1.235.398.3.265.45.615.45 1.049 0 .434-.15.782-.45 1.045-.3.264-.712.396-1.235.396h-.828zm4.079-.869h.647c.256 0 .447-.053.572-.161.125-.108.188-.268.188-.48a.655.655 0 00-.19-.494c-.125-.123-.31-.184-.554-.184h-.663v1.32zm0 .7v1.812h-.912v-4.532h1.575c.518 0 .924.118 1.217.353.293.237.44.565.44.986a.988.988 0 01-.187.602 1.287 1.287 0 01-.542.409c.269.08.462.212.58.396.117.184.177.413.177.685v.333c0 .126.017.258.051.396.035.138.094.24.177.307v.065h-.94c-.085-.067-.138-.176-.162-.33a2.898 2.898 0 01-.036-.445v-.32c0-.226-.062-.402-.186-.528-.123-.125-.3-.188-.527-.188h-.725zm3.229 1.812h.913v-4.532h-.913zm3.367-1.229l.056.248h.019l.052-.239.992-3.312h.962l-1.548 4.532h-.936l-1.544-4.532h.962zm4.163-4.578h1.016l.006.019-.865.808h-.78l.623-.827zm.96 3.816h-1.688v1.294h2.006v.698h-2.919v-4.532h2.913v.7h-2v1.14h1.687v.7z"
           fill="currentColor"></path>
       </g>
-    </svg></div>
+    </svg></a>
+  <a id="site-link" href="https://www.iticparis.com"><span aria-hidden="true">←</span> Site ITIC Paris</a>
   <div id="itic-tri"></div>
 
 
@@ -1426,9 +1458,9 @@
         <p class="cap-eye">Analyse complétée</p>
         <h2 class="cap-h">Où envoyer<br>votre profil ?</h2>
         <p class="cap-sub">Votre analyse et la formation compatible<br>avec votre profil vous seront transmises ici.</p>
-        <input type="text" class="field" id="fName" placeholder="Votre prénom " autocomplete="given-name">
+        <input type="text" class="field" id="fName" placeholder="Votre prénom (facultatif)" autocomplete="given-name">
         <input type="email" class="field" id="fEmail" placeholder="Votre adresse email" autocomplete="email" required>
-        <input type="tel" class="field" id="fPhone" placeholder="Votre téléphone " autocomplete="tel">
+        <input type="tel" class="field" id="fPhone" placeholder="Votre téléphone (facultatif)" autocomplete="tel">
         <input type="text" class="field hp" id="fWebsite" name="website" tabindex="-1" autocomplete="off"
           aria-hidden="true">
         <label class="consent">
@@ -1770,9 +1802,9 @@
       hybride: "Hybride", adaptatif: "Adaptatif", leadership: "Leadership", analyste: "Analyste"
     };
     const PAXIS = {
-      innovateur: "Innov", creatif: "Créa", business: "Biz", tech: "Tech",
-      entrepreneurial: "Entr", international: "Intl", hybride: "Hybr", adaptatif: "Adap",
-      leadership: "Lead", analyste: "Anal"
+      innovateur: "Innovation", creatif: "Créativité", business: "Business", tech: "Tech",
+      entrepreneurial: "Entrepreneuriat", international: "International", hybride: "Hybride", adaptatif: "Adaptabilité",
+      leadership: "Leadership", analyste: "Analyse"
     };
 
     const COMBO_MAP = {
@@ -1969,13 +2001,13 @@
       [.25, .5, .75, 1].forEach(r => {
         const p = document.createElementNS(ns, 'polygon');
         p.setAttribute('points', PKEYS.map((_, i) => pt(i, r).join(',')).join(' '));
-        p.setAttribute('fill', 'none'); p.setAttribute('stroke', `rgba(255,255,255,${r === 1 ? .06 : .03})`);
-        p.setAttribute('stroke-width', '1'); svg.appendChild(p);
+        p.setAttribute('fill', 'none'); p.setAttribute('stroke', `rgba(255,255,255,${r === 1 ? .28 : .16})`);
+        p.setAttribute('stroke-width', r === 1 ? '1.6' : '1.2'); svg.appendChild(p);
       });
       PKEYS.forEach((_, i) => {
         const [x, y] = pt(i, 1); const l = document.createElementNS(ns, 'line');
         l.setAttribute('x1', cx); l.setAttribute('y1', cy); l.setAttribute('x2', x); l.setAttribute('y2', y);
-        l.setAttribute('stroke', 'rgba(255,255,255,.04)'); l.setAttribute('stroke-width', '1'); svg.appendChild(l);
+        l.setAttribute('stroke', 'rgba(255,255,255,.16)'); l.setAttribute('stroke-width', '1.2'); svg.appendChild(l);
       });
       const norm = PKEYS.map(k => Math.max(.04, (scores[k] || 0) / max));
       const fill = document.createElementNS(ns, 'polygon');
@@ -1988,10 +2020,11 @@
         c.setAttribute('fill', '#5A72F4'); c.setAttribute('filter', 'url(#rgl)'); svg.appendChild(c);
       });
       PKEYS.forEach((k, i) => {
-        const [x, y] = pt(i, 1.24); const t = document.createElementNS(ns, 'text');
-        t.setAttribute('x', x); t.setAttribute('y', y); t.setAttribute('text-anchor', 'middle');
+        const [x, y] = pt(i, 1.12); const t = document.createElementNS(ns, 'text');
+        t.setAttribute('x', x); t.setAttribute('y', y);
+        t.setAttribute('text-anchor', x < cx - 5 ? 'end' : x > cx + 5 ? 'start' : 'middle');
         t.setAttribute('dominant-baseline', 'middle'); t.setAttribute('font-size', '8');
-        t.setAttribute('fill', 'rgba(255,255,255,.28)'); t.setAttribute('font-family', 'Inter,sans-serif');
+        t.setAttribute('fill', 'rgba(255,255,255,.55)'); t.setAttribute('font-family', 'Inter,sans-serif');
         t.textContent = PAXIS[k].toUpperCase(); svg.appendChild(t);
       });
     }
@@ -2186,9 +2219,6 @@
       }
     }
 
-    // ═══════════════════════════════════════════════
-    // CAPTURE
-    // ═══════════════════════════════════════════════
     function submitCapture() {
       const eEl = document.getElementById('fEmail'); const email = eEl.value.trim();
       eEl.classList.remove('err');
